@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+
+  request:
+    build:
+      context: ./request-service
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on: [mongo]
+    environment:
+      MONGO_URI: mongodb://${DB_USER}:${DB_PASSWD}@mongo:27017/?authMechanism=DEFAULT
+      MONGO_COLLECTION: ${DB_COLLECTION}
+      URL: ${URL}
+      PYTHONUNBUFFERED: 1
+    command: "python main.py 10"
+    tty: true
+
+  api:
+    build:
+      context: ./api-service
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+    command: "python run.py"
+    depends_on: [mongo]
+
+  mongo:
+    image: mongo:latest
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo-service/mongo_init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWD}
+
+  
+
+    
+
+      
+
