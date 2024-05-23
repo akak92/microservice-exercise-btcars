@@ -11,7 +11,8 @@ from time import sleep
 #   Función principal que almacena resultado "btcars" en el servicio local mongo.
 #   MONGO_URI y URL son variables de entorno definidas en docker-compose
 #
-#   Se importa función llamado(url) para obtener respuesta de API externa.
+#   Se importa función llamado(url) (importada de req.py)
+#   para obtener respuesta de API externa.
 #   Ejecución definida en docker-compose (command), admite ejecución cada N segundos.
 #
 

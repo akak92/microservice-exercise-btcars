@@ -1,8 +1,4 @@
-from mongoengine import Document, StringField, FloatField, DateTimeField
-from pydantic import BaseModel
-from datetime import datetime as dt
-from datetime import timezone
-
+from api import db
 #   Pedro Díaz | 23-05-2024
 #   models.py:
 #       clase BTCars(Document): Modelo definido para utilización de ODM 
@@ -13,17 +9,17 @@ from datetime import timezone
 #        ntes de guardar en DB.
 #
 
-class BTCars(Document):
+class BTCars(db.Document):
     meta = {'collection' : 'btcars'}
 
-    currency = StringField(max_length=32, required=True)
-    bid_currency = StringField(max_length=32, required=True)
-    ask_currency = StringField(max_length=32, required=True)
-    purchase_price = FloatField(required=True)
-    selling_price = FloatField(required=True)
-    open_price = FloatField(required=True)
-    market_identifier = StringField(max_length=32, required=True)
-    timestamp = DateTimeField(default=dt.now(timezone.utc))
+    currency = db.StringField(max_length=32, required=True)
+    bid_currency = db.StringField(max_length=32, required=True)
+    ask_currency = db.StringField(max_length=32, required=True)
+    purchase_price = db.FloatField(required=True)
+    selling_price = db.FloatField(required=True)
+    open_price = db.FloatField(required=True)
+    market_identifier = db.StringField(max_length=32, required=True)
+    timestamp = db.IntField(required=True)
 
     @property
     def serialize(self):
@@ -38,12 +34,3 @@ class BTCars(Document):
             'market_identifier' : self.market_identifier,
             'timestamp' : self.timestamp
         }
-    
-class BTCarsData(BaseModel):
-    currency: str
-    bid_currency: str
-    ask_currency: str
-    purchase_price: float
-    selling_price: float
-    open_price: float
-    market_identifier: str

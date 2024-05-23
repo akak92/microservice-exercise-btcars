@@ -1,7 +1,6 @@
-from mongoengine import Document, StringField, FloatField, DateTimeField
+from mongoengine import Document, StringField, FloatField, IntField
 from pydantic import BaseModel
 from datetime import datetime as dt
-from datetime import timezone
 
 #   Pedro Díaz | 23-05-2024
 #   models.py:
@@ -23,7 +22,7 @@ class BTCars(Document):
     selling_price = FloatField(required=True)
     open_price = FloatField(required=True)
     market_identifier = StringField(max_length=32, required=True)
-    timestamp = DateTimeField(default=dt.now(timezone.utc))
+    timestamp = IntField(required=True)
 
     @property
     def serialize(self):
@@ -47,3 +46,4 @@ class BTCarsData(BaseModel):
     selling_price: float
     open_price: float
     market_identifier: str
+    timestamp: int
