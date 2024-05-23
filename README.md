@@ -31,7 +31,24 @@ mv .env.example .env
 ren .env.example .env
 ```
 
-A continuación, ejecute el siguiente comando para inicializar los contenedores:
+#### Archivo .env
+
+Aquí se encuentran alojadas las variables de entorno que luego son utilizadas por los distintos servicios.
+```
+DB_USER=your_db_user
+DB_PASSWD=your_db_password
+DB_COLLECTION=your_db_collection
+URL=https://be.buenbit.com/api/market/tickers/
+
+DEFAULT_PAGE_SIZE=10 # Tamaño utilizado para paginación
+
+SLEEP_TIME_IN_SECONDS=10 #cantidad de segundos para solicitud request.
+```
+Por defecto, ya existen valores cargados para un correcto funcionamiento del aplicativo.
+
+#### Inicializar los servicios
+
+Ejecute el siguiente comando para inicializar los contenedores:
 ```
 docker-compose up --build --remove-orphans -d
 ```
