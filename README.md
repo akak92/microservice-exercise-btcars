@@ -56,4 +56,21 @@ El contenedor se inicializará en segundo plano, gracias al argumento `-d`. Recu
 ```
 docker logs <NOMBRE_DEL_CONTENEDOR>
 ```
+## Descripción
 
+El microservicio es subdividido en 3 diferentes servicios (contenedores) que, operando de forma conjunta, ofrecen una solución modular para facilitar su modificación y/o mantenimiento.
+
+* `Servicio request:` Posee un script `main.py` que se ejecuta cada N segundos. Realiza consulta a endpoint de API provista sobre los precios de bitcoin. Establece conexión a base local MongoDB y almacena los valores del elemento "btcars". Se añade campo "timestamp" al documento "btcars" con el timestamp correspondiente a la realización de la consulta `(formato Epoch: número entero, horario local).`
+
+* `Servicio mongo:` Base de datos no relacional que posee una colección llamada `btcars`. Allí almacenamos elementos obtenidos por el servicio request. Es utilizada por el servicio api para consultar la información.
+
+* `Servicio api:` API REST escrita en Flask para la realización de diversas consultas. Utiliza el servicio mongo como fuente de información.
+
+servicio api y request dependen de mongo. Por es su inicialización se fuerza a que sea posterior al inicio del servicio mongo mediante cláusula `depends_on` en el docker-compose.
+
+A continuación se adjunta un diagrama que acompaña lo descrito previamente:
+![Diagrama de solución](docs/diagrama.png)
+
+## Utilización
+
+Por terminar...
