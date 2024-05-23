@@ -3,10 +3,6 @@ from api import db
 #   models.py:
 #       clase BTCars(Document): Modelo definido para utilización de ODM 
 #       (Object Document Modeling) utilizando mongoengine.
-#       
-#
-#       clase BTCarsData(BaseModel): Modelo que utilizo para parsear datos 
-#        ntes de guardar en DB.
 #
 
 class BTCars(db.Document):
