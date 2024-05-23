@@ -13,7 +13,7 @@ services:
       MONGO_COLLECTION: ${DB_COLLECTION}
       URL: ${URL}
       PYTHONUNBUFFERED: 1
-    command: "python main.py 10"
+    command: "python main.py ${SLEEP_TIME_IN_SECONDS}"
     tty: true
 
   api:
