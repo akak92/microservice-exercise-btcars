@@ -137,6 +137,7 @@ Para ejecutar las pruebas, abrir una shell y ejecutar el comando:
 ```
 docker exec -it microservice-exercise-btcars-api-1 pytest /app/api/tests/test_btcars.py
 ```
+`Nota: ` También es posible realizar las pruebas con los contenedores apagados.
 
 Puede que el nombre del contenedor cambie (en algunos sistemas el nombre utiliza `_` en vez de `-`). Consulte el nombre del contenedor del servicio api utilizando el comando `docker ps`
 
