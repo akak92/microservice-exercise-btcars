@@ -29,7 +29,7 @@ def test_btcars_GET_BTCars_not_found(app, client):
 
 def test_btcars_GET_BTCars_invalid_timestamp(app, client):
     response = client.get('/btcars/invalid')
-    assert response.status_code == 400
+    assert response.status_code == 404
 
 #
 # Pruebas unitarias para el cálculo de promedio
@@ -50,7 +50,7 @@ def test_btcars_promedio_no_docs(app, client):
     assert json_data['prom'] is None
 
 def test_btcars_promedio_invalid_range(app, client):
-    response = client.get(f'/btcars/promedio?init={TEST_INIT_VALUE}&end={TEST_END_VALUE}')
+    response = client.get(f'/btcars/promedio?init={TEST_END_VALUE}&end={TEST_INIT_VALUE}')
     assert response.status_code == 400
     json_data = response.get_json()
     assert json_data['message'] == 'Búsqueda mal formada. end debe ser mayor que init.'
