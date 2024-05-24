@@ -28,6 +28,11 @@ services:
     environment:
       MONGO_URI: mongodb://${DB_USER}:${DB_PASSWD}@mongo:27017/?authMechanism=DEFAULT
       DEFAULT_PAGE_SIZE: ${DEFAULT_PAGE_SIZE}
+      # Para pruebas unitarias
+      TEST_INIT_VALUE: ${TEST_INIT_VALUE}
+      TEST_END_VALUE: ${TEST_END_VALUE}
+      TEST_TIMESTAMP: ${TEST_TIMESTAMP}
+      TEST_PAGE_VALUE: ${TEST_PAGE_VALUE}
 
   mongo:
     image: mongo:latest
