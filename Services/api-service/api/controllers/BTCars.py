@@ -6,23 +6,17 @@ btcars_bp = Blueprint('btcars_bp', __name__)
 #
 #   Pedro Diaz - 23-05-2024
 #   
-#    Endpoints para resolver ejercicio. Utilizamos clase BTCars definida en models.py
-#    Formato utilizado de timestamp: Epoch int
+#    Endpoints para resolver ejercicio 1). Utilizamos clase BTCars definida en models.py
+#    Formato utilizado de titammesp esperado: Unix (int)
 #    
 #   GET_BTCars(timestamp)   
-#       decorador => /btcars/<int:timestamp>    
-#       ejemplo de llamada => /btcars/1716494100
 #       retorna único documento encontrado para ese timestamp.
 #
 #   promedio()
-#       decorador => /btcars/promedio
-#       ejemplo de llamada => /btcars/promedio?init=1716494100&end=1716494150
 #       requiere de parámetros init y end
 #       retorna el promedio de los documentos que se encuentren entre el rango establecido.
 #
 #   GET_BTCars_Pagination()
-#       decorador => /btcars
-#       ejemplo de llamada => /btcars?page=1&init=1716494100&end=1716494150
 #       requiere de parámetros page, init y end
 #       retorna conjunto de resultados (paginados) con o sin filtro de timestamp.
 #
