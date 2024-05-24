@@ -1,7 +1,7 @@
 # microservice-exercise-btcars
 Microservicio que permite obtener el precio actual de bitcoin cada N segundos. Permitiendo realizar búsquedas mediante la consulta a una API REST.
 
-Las consultas requieren de la utilización de un timestamp para filtrado. El formato esperado del timestamp es el `Formato de fecha: Tiempo Unix`. Para saber más, [este enlace](https://es.wikipedia.org/wiki/Tiempo_Unix).
+Las consultas requieren de la utilización de un timestamp para filtrado. El formato esperado del timestamp es el `Formato de fecha: Tiempo Unix`. Para saber más visite [este enlace](https://es.wikipedia.org/wiki/Tiempo_Unix).
 
 #### Herramientas / Frameworks
 
