@@ -62,9 +62,9 @@ docker logs <NOMBRE_DEL_CONTENEDOR>
 ```
 ## Descripción
 
-El microservicio es subdividido en 3 diferentes servicios (contenedores) que, operando de forma conjunta, ofrecen una solución modular para facilitar su modificación y/o mantenimiento.
+El microservicio es subdividido en 3 diferentes services (contenedores).
 
-* `Servicio request:` Posee un script `main.py` que se ejecuta cada N segundos. Realiza consulta a endpoint de API provista sobre los precios de bitcoin. Establece conexión a base local MongoDB y almacena los valores del elemento "btcars". Se añade campo "timestamp" al documento "btcars" con el timestamp correspondiente a la realización de la consulta `(formato Unix [integer], horario local).`
+* `Servicio request:` Posee un script `main.py` que se ejecuta cada N segundos. Realiza la consulta a URL que nos provee de los precios de bitcoin. Establece conexión a base local MongoDB y almacena los valores del elemento "btcars". Se añade campo "timestamp" al documento "btcars" con el timestamp correspondiente a la realización de la consulta `(formato Unix [integer], horario local).`
 
 * `Servicio mongo:` Base de datos no relacional que posee una colección llamada `btcars`. Allí almacenamos elementos obtenidos por el servicio request. Es utilizada por el servicio api para consultar la información.
 
@@ -72,7 +72,10 @@ El microservicio es subdividido en 3 diferentes servicios (contenedores) que, op
 
 Los servicios `api` y `request` dependen de `mongo`. Se utiliza la cláusula `depends_on` dentro de docker-compose para garantizar que el servicio mongo inicie primero.
 
+Esta división en diferentes servicios mejora el mantenimiento y ciclo de vida general de la aplicación.
+
 A continuación se adjunta un diagrama que acompaña lo descrito previamente:
+
 ![Diagrama de solución](docs/diagrama.png)
 
 ## Utilización con POSTman
