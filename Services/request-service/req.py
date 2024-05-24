@@ -19,6 +19,6 @@ def llamado(URL):
             timestamp = dt.now(timezone_ar)
             response['timestamp'] = int(timestamp.timestamp())
     except Exception as e:
-        raise ConnectionError(f"Falló la conexión a la URL solicitada: {str(e)}")
+        raise RuntimeError(f"Sucedió un error en tiempo de ejecución: {e}")
     finally:
         return response
