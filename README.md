@@ -47,6 +47,13 @@ URL=https://be.buenbit.com/api/market/tickers/
 DEFAULT_PAGE_SIZE=10 # Tamaño utilizado para paginación
 
 SLEEP_TIME_IN_SECONDS=10 #cantidad de segundos para solicitud request.
+
+#Parámetros para pruebas unitarias
+TEST_INIT_VALUE=
+TEST_END_VALUE=
+TEST_TIMESTAMP=
+TEST_PAGE_VALUE=
+
 ```
 Por defecto, ya existen valores cargados para un correcto funcionamiento del aplicativo.
 
@@ -112,14 +119,26 @@ En caso de estar conectado por cable (Ethernet), reemplace `wlan0` por `eth0`.
 
 ## Pruebas Unitarias
 
-Las pruebas unitarias se han definido para el `servicio api` dentro de la carpeta `tests` utilizando la librería `pytest`
+Las pruebas unitarias se han definido para el `servicio api` dentro de la carpeta `tests` utilizando la librería `pytest`.
+
+Dentro del archivo `.env` se encuentran variables que deben ser completadas previas a la ejecución de las pruebas.
+
+```
+[...]
+#Parámetros para pruebas unitarias
+TEST_INIT_VALUE=
+TEST_END_VALUE=
+TEST_TIMESTAMP=
+TEST_PAGE_VALUE=
+```
+Una vez cargadas estas variables, volver a encender el contenedor.
 
 Para ejecutar las pruebas, abrir una shell y ejecutar el comando:
 ```
 docker exec -it microservice-exercise-btcars-api-1 pytest /app/api/tests/test_btcars.py
 ```
 
-Puede que el nombre del contenedor cambie. En cualquier caso, consulte el nombre del contenedor del servicio api utilizando el comando `docker ps`
+Puede que el nombre del contenedor cambie (en algunos sistemas el nombre utiliza `_` en vez de `-`). Consulte el nombre del contenedor del servicio api utilizando el comando `docker ps`
 
 #### Aclaración sobre pruebas unitarias
 
