@@ -116,8 +116,9 @@ Puede que el nombre del contenedor cambie. En cualquier caso, consulte el nombre
 
 #### Aclaración sobre pruebas unitarias
 
-Observarán que se producen múltiples advertencias (warnings).
-Esto se debe a la versión de Flask utilizada. `Flask==2.2.2`
+Observarán que se producen múltiples advertencias (warnings). Esto se debe a conflictos entre las versiones recientes de flask `[Flask>=3.0]` y la versión de flask-mongoengine instalada en mi PC local `[flask-mongoengine==1.0.0]`.
+
+Por cuestiones de tiempo y al tener un plazo de 3 días, decidí utilizar `Flask==2.2.2` para evitar problemas de compatibilidad (problemas con `JSONEncoder` al parecer).
 
 
 

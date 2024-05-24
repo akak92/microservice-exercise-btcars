@@ -86,8 +86,7 @@ def promedio():
     finally:
         response = {
             'message' : message,
-            'prom' : prom,
-            'elements' : [btcars.serialize for btcars in btcars] if btcars else None
+            'prom' : prom
         }, status
         return response
     
