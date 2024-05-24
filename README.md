@@ -66,7 +66,7 @@ El microservicio es subdividido en 3 diferentes servicios (contenedores) que, op
 
 * `Servicio api:` API REST escrita en Flask para la realización de diversas consultas. Utiliza el servicio mongo como fuente de información.
 
-servicio api y request dependen de mongo. Por es su inicialización se fuerza a que sea posterior al inicio del servicio mongo mediante cláusula `depends_on` en el docker-compose.
+Los servicios `api` y `request` dependen de `mongo`. Se utiliza la cláusula `depends_on` dentro de docker-compose para garantizar que el servicio mongo inicie primero.
 
 A continuación se adjunta un diagrama que acompaña lo descrito previamente:
 ![Diagrama de solución](docs/diagrama.png)

@@ -4,7 +4,7 @@ services:
 
   request:
     build:
-      context: ./request-service
+      context: ./Services/request-service
       dockerfile: Dockerfile
     restart: unless-stopped
     depends_on: [mongo]
@@ -18,7 +18,7 @@ services:
 
   api:
     build:
-      context: ./api-service
+      context: ./Services/api-service
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
@@ -35,7 +35,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ./mongo-service/mongo_init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./mongo_init.js:/docker-entrypoint-initdb.d/mongo-init.js
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWD}
