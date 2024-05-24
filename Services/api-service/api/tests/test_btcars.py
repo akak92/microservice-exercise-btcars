@@ -43,7 +43,7 @@ def test_btcars_promedio_success(app, client):
     assert 'prom' in json_data
 
 def test_btcars_promedio_no_docs(app, client):
-    response = client.get('/btcars/promedio?init=1416519438&end=1516522306')
+    response = client.get('/btcars/promedio?init=1116519438&end=1126522306')
     assert response.status_code == 404
     json_data = response.get_json()
     assert json_data['message'] == 'No existen documentos para el rango solicitado.'
