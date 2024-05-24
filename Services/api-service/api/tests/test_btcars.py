@@ -7,8 +7,15 @@
 # Pruebas unitarias para la obtención de precio bitcoin
 #
 
+import os
+
+TEST_INIT_VALUE= os.getenv('TEST_INIT_VALUE')
+TEST_END_VALUE= os.getenv('TEST_END_VALUE')
+TEST_TIMESTAMP= os.getenv('TEST_TIMESTAMP')
+TEST_PAGE_VALUE= os.getenv('TEST_PAGE_VALUE')
+
 def test_btcars_GET_BTCars_success(app, client):
-    response = client.get('/btcars/1716517049')
+    response = client.get(f'/btcars/{TEST_TIMESTAMP}')
     assert response.status_code == 200
     json_data = response.get_json()
     assert json_data['message'] == 'Documento encontrado en MongoDB'
@@ -30,21 +37,21 @@ def test_btcars_GET_BTCars_invalid_timestamp(app, client):
 #
 
 def test_btcars_promedio_success(app, client):
-    response = client.get('/btcars/promedio?init=1716519438&end=1716522306')
+    response = client.get(f'/btcars/promedio?init={TEST_INIT_VALUE}&end={TEST_END_VALUE}')
     assert response.status_code == 200
     json_data = response.get_json()
     assert json_data['message'] == 'Promedio obtenido exitosamente.'
     assert 'prom' in json_data
 
 def test_btcars_promedio_no_docs(app, client):
-    response = client.get('/btcars/promedio?init=1716519438&end=1716522306')
+    response = client.get('/btcars/promedio?init=1416519438&end=1316522306')
     assert response.status_code == 404
     json_data = response.get_json()
     assert json_data['message'] == 'No existen documentos para el rango solicitado.'
     assert json_data['prom'] is None
 
 def test_btcars_promedio_invalid_range(app, client):
-    response = client.get('/btcars/promedio?init=1716522306&end=1716519438')  # init > end
+    response = client.get(f'/btcars/promedio?init={TEST_INIT_VALUE}&end={TEST_END_VALUE}')
     assert response.status_code == 400
     json_data = response.get_json()
     assert json_data['message'] == 'Búsqueda mal formada. end debe ser mayor que init.'
@@ -62,14 +69,14 @@ def test_btcars_promedio_missing_params(app, client):
 #
 
 def test_btcars_pagination_with_timestamps_success(app, client):
-    response = client.get('/btcars?page=1&init=1716519438&end=1716522306')
+    response = client.get(f'/btcars?page={TEST_PAGE_VALUE}&init={TEST_INIT_VALUE}&end={TEST_END_VALUE}')
     assert response.status_code == 200
     json_data = response.get_json()
     assert json_data['message'] == 'Documentos obtenidos con filtro de timestamp.'
     assert 'elements' in json_data
 
 def test_btcars_pagination_without_timestamps_success(app, client):
-    response = client.get('/btcars?page=1')
+    response = client.get(f'/btcars?page={TEST_PAGE_VALUE}')
     assert response.status_code == 200
     json_data = response.get_json()
     assert json_data['message'] == 'Documentos obtenidos sin filtro de timestamp.'
