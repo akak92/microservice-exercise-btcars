@@ -1,5 +1,9 @@
 # microservice-exercise-btcars
-Creación de microservicio, obteniendo información de API sobre precios de Bitcoin
+Microservicio que permite obtener el precio actual de bitcoin cada N segundos. Permitiendo realizar búsquedas mediante la consulta a una API REST.
+
+Las consultas requieren de la utilización de un timestamp para filtrado. El formato esperado del timestamp es el `Formato de fecha: Tiempo Unix`. Para saber más, [este enlace](https://es.wikipedia.org/wiki/Tiempo_Unix).
+
+#### Herramientas / Frameworks
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
@@ -24,11 +28,11 @@ Diríjase al directorio del repositorio utilizando el comando `cd` y cambie el n
 
 #### En Windows:
 ```
-mv .env.example .env
+ren .env.example .env
 ```
 #### En Linux:
 ```
-ren .env.example .env
+mv .env.example .env
 ```
 
 #### Archivo .env
