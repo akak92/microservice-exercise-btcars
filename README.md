@@ -103,3 +103,22 @@ ip addr show wlan0 | grep inet
 ```
 En caso de estar conectado por cable (Ethernet), reemplace `wlan0` por `eth0`.
 
+## Pruebas Unitarias
+
+Las pruebas unitarias se han definido para el `servicio api` dentro de la carpeta `tests` utilizando la librería `pytest`
+
+Para ejecutar las pruebas, abrir una shell y ejecutar el comando:
+```
+docker exec -it microservice-exercise-btcars-api-1 pytest /app/api/tests/test_btcars.py
+```
+
+Puede que el nombre del contenedor cambie. En cualquier caso, consulte el nombre del contenedor del servicio api utilizando el comando `docker ps`
+
+#### Aclaración sobre pruebas unitarias
+
+Observarán que se producen múltiples advertencias (warnings).
+Esto se debe a la versión de Flask utilizada. `Flask==2.2.2`
+
+
+
+

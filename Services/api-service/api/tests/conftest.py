@@ -1,9 +1,10 @@
 import pytest
-from api import create_app as flask_app
+from api import create_app
 
 @pytest.fixture
 def app():
-    yield flask_app
+    app = create_app()
+    yield app
 
 @pytest.fixture
 def client(app):
