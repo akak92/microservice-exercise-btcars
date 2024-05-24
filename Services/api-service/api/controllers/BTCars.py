@@ -30,13 +30,13 @@ btcars_bp = Blueprint('btcars_bp', __name__)
 def GET_BTCars(timestamp):
     try:
         message = ""
-        data = {}
+        element = {}
         status = 200
 
         btcars = BTCars.objects(timestamp=timestamp).first()
         if btcars is not None:
             message = 'Documento encontrado en MongoDB'
-            data = btcars.serialize
+            element = btcars.serialize
         else:
             message = 'Documento no encontrado en MongoDB'
             status = 404
@@ -46,7 +46,7 @@ def GET_BTCars(timestamp):
     finally:
         response = {
             'message' : message,
-            'data' : data,
+            'element' : element,
         }, status
         return response
 
@@ -95,6 +95,7 @@ def GET_BTCars_pagination():
     try:
         message = ""
         status = 200
+        
         init = int(request.args.get('init')) if request.args.get('init') else None
         end = int(request.args.get('end')) if request.args.get('end') else None
         page = int(request.args.get('page')) if request.args.get('page') else None
