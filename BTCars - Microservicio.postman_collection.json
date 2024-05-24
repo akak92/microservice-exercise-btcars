@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "27ec1452-6791-4e49-b125-379784bb06b3",
+		"name": "BTCars - Microservicio",
+		"description": "Colección que contiene llamadas a los endpoints de la REST API solicitada en el ejercicio de creación de un microservicio.\n\nRevisar y modificar la pestaña \"Variables\" para la realización de pruebas.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14572964"
+	},
+	"item": [
+		{
+			"name": "BTCars",
+			"item": [
+				{
+					"name": "BTCars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{LOCAL_IP}}:5000/btcars/{{timestamp}}",
+							"protocol": "http",
+							"host": [
+								"{{LOCAL_IP}}"
+							],
+							"port": "5000",
+							"path": [
+								"btcars",
+								"{{timestamp}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Promedio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{LOCAL_IP}}:5000/btcars/promedio?init={{init}}&end={{end}}",
+							"protocol": "http",
+							"host": [
+								"{{LOCAL_IP}}"
+							],
+							"port": "5000",
+							"path": [
+								"btcars",
+								"promedio"
+							],
+							"query": [
+								{
+									"key": "init",
+									"value": "{{init}}"
+								},
+								{
+									"key": "end",
+									"value": "{{end}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paginación",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{LOCAL_IP}}:5000/btcars?page={{page}}&init={{init}}&end={{end}}",
+							"protocol": "http",
+							"host": [
+								"{{LOCAL_IP}}"
+							],
+							"port": "5000",
+							"path": [
+								"btcars"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "init",
+									"value": "{{init}}"
+								},
+								{
+									"key": "end",
+									"value": "{{end}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Carpeta que contiene llamadas a los endpoints de la entidad BTCars"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "LOCAL_IP",
+			"value": "192.168.100.86",
+			"type": "string"
+		},
+		{
+			"key": "timestamp",
+			"value": "1716508678",
+			"type": "string"
+		},
+		{
+			"key": "init",
+			"value": "1716508603",
+			"type": "string"
+		},
+		{
+			"key": "end",
+			"value": "1716508809",
+			"type": "string"
+		},
+		{
+			"key": "page",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

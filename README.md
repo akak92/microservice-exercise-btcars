@@ -71,6 +71,35 @@ servicio api y request dependen de mongo. Por es su inicialización se fuerza a 
 A continuación se adjunta un diagrama que acompaña lo descrito previamente:
 ![Diagrama de solución](docs/diagrama.png)
 
-## Utilización
+## Utilización con POSTman
 
-Por terminar...
+En el repositorio, existe una colección almacenada llamada `BTCars - Microservicio.postman_collection.json` en la que se encuentran definidos los endpoints para realizar pruebas.
+
+Ingrese a POSTMan e importe la colección. Deberá cambiar el valor de una serie de variables definidas para la colección:
+
+```
+    LOCAL_IP : Su dirección ip local
+    timestamp : timestamp que utilizará en el / los endpoints
+    init : timestamp de inicio de rango de búsqueda
+    end : timestamp de finalización de rango de búsqueda
+    page : página a la cual desea acceder en endpoint de paginación
+```
+
+#### Obtener Dirección IP local
+
+#### Windows
+
+Abra PowerShell, ejecute el siguiente comando:
+```
+Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias "Wi-Fi" | Select-Object -ExpandProperty IPAddress
+```
+En caso de estar conectado por cable (Ethernet), reemplace `"Wi-Fi"` por `"Ethernet"`.
+
+#### Linux
+
+Abra una shell, ejecute el siguiente comando:
+```
+ip addr show wlan0 | grep inet
+```
+En caso de estar conectado por cable (Ethernet), reemplace `wlan0` por `eth0`.
+
