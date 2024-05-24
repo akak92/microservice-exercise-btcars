@@ -2,17 +2,16 @@
 #   Pedro Díaz | 23-05-2023
 #   Test unitarios para controlador BTCars 
 #   
-
-#
-# Pruebas unitarias para la obtención de precio bitcoin
-#
-
 import os
 
 TEST_INIT_VALUE= os.getenv('TEST_INIT_VALUE')
 TEST_END_VALUE= os.getenv('TEST_END_VALUE')
 TEST_TIMESTAMP= os.getenv('TEST_TIMESTAMP')
 TEST_PAGE_VALUE= os.getenv('TEST_PAGE_VALUE')
+
+#
+# Pruebas unitarias para la obtención de precio bitcoin
+#
 
 def test_btcars_GET_BTCars_success(app, client):
     response = client.get(f'/btcars/{TEST_TIMESTAMP}')
