@@ -6,8 +6,8 @@ import pytz
 #       Función que retorna el contenido del objeto "btcars" 
 #       de la url https://be.buenbit.com/api/market/tickers/
 #
-#       Agregamos campo timestamp al response. Formato Epoch. Horario local.
-
+#       Agregamos campo timestamp al response. Formato Unix. Horario local.
+#
 def llamado(URL):
     try:
         response = {}

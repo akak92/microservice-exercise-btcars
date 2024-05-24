@@ -9,7 +9,7 @@ from datetime import datetime as dt
 #       
 #
 #       clase BTCarsData(BaseModel): Modelo que utilizo para parsear datos 
-#        ntes de guardar en DB.
+#       antes de guardar en DB.
 #
 
 class BTCars(Document):
